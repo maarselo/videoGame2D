@@ -12,6 +12,7 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+#  define BUFFER_SIZE 100
 
 # include <unistd.h>
 # include <stddef.h>
@@ -71,5 +72,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+
 
 #endif
