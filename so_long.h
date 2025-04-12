@@ -21,24 +21,22 @@
 # include <unistd.h> //write
 # include <stdio.h> //for test
 
-typedef struct s_places
+typedef struct s_map
 {
-	int		empty;
-	int		wall;
-	int		collectable;
-	int		exit;
-	int		initiation;
-}	t_places;
+	int			rows;
+	int			columns;
+	char		**map;
+}				t_map;
 
 //for cretae struct for count how many places
-t_places	*ft_create_struct(void);
 
 //entry and utilsutils
+int			ft_check_file(int fd, char *file);
 int			ft_check_len(char *str);
 
-int			ft_check_entry(char *file);
+void		ft_check_entry_to_map(char *file, t_map *map);
 //error
 void		ft_error(void);
 //free
-void		ft_free(t_places *places);
+void		ft_free(t_map *map);
 #endif

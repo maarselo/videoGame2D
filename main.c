@@ -14,13 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	//int			fd;
-	//char		**map;
+	t_map	map;
 	//t_places	*places;
 
 	if (argc != 2)
 		return (1);
-	/*fd = */ft_check_entry(argv[1]);
-	//map = ft_check_format(fd);
+	ft_check_entry_to_map(argv[1], &map);
 	//ft_free(places);
 }

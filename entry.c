@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	ft_check_line(char *line)
+static void	ft_check_line(char *line)
 {
 	char	*content_map;
 
@@ -20,19 +20,26 @@ static int	ft_check_line(char *line)
 	while (*line)
 	{
 		if (*line != '\n' && !ft_strchr(content_map, *line))
+		{
+			free(line);
 			return (1);
+		}
 		line++;
 	}
 	return (0);
 }
 
-static int	ft_read_file(int fd)
+static int	ft_read_file(int fd, t_map *map)
 {
-	int		len;
-	char	*line ;
+	int			rows;
+	int			columns;
+	int			first_len;
+	char		*line ;
 
+	rows = 0;
+	columns = 0;
+	first_len = ft_check_len(line);
 	line = get_next_line(fd);
-	len = ft_check_len(line);
 	while (line)
 	{
 		if (ft_check_line(line))
@@ -40,9 +47,10 @@ static int	ft_read_file(int fd)
 			free(line);
 			return (1);
 		}
+		ft_to_map(rows, line, )
 		free(line);
 		line = get_next_line(fd);
-		if (len != ft_check_len(line))
+		if (first_len != ft_check_len(line))
 		{
 			if (!ft_check_len(line))
 				continue ;
@@ -53,14 +61,16 @@ static int	ft_read_file(int fd)
 	return (0);
 }
 
-int	ft_check_entry(char *file)
+void	ft_check_entry_to_map(char *file, t_map *map)
 {
 	int	fd;
 
 	fd = open(file, O_RDONLY);
-	if (!ft_strnstr(file, ".ber", ft_strlen(file)) || fd == -1)
+	if (ft_check_file(fd, file))
 		ft_error();
-	if (ft_read_file(fd))
-		ft_error();
-	return (fd);
+	
+	ft_read_file(fd, map);
+	if (!map)
+
+	return (0);
 }

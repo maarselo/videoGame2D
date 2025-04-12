@@ -12,12 +12,12 @@
 
 #include "so_long.h"
 
-static void	ft_free_struct_places(t_places *places)
+static void	ft_free_struct_map(t_map *map)
 {
-	free(places);
+	free(map);
 }
 
-void	ft_free(t_places *places)
+void	ft_free(t_map *map)
 {
-	ft_free_struct_places(places);
+	ft_free_struct_map(map);
 }

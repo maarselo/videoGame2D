@@ -12,15 +12,13 @@
 
 #include "so_long.h"
 
-t_places	*ft_create_struct(void)
+t_map	*ft_create_map()
 {
-	t_places	*places;
+	t_map	*map;
 
-	places = (t_places *)malloc(sizeof(t_places));
-	places->empty = 0;
-	places->wall = 0;
-	places->collectable = 0;
-	places->exit = 0;
-	places->initiation = 0;
-	return (places);
+	map = (t_map*)malloc(sizeof(t_map));
+	map->rows = 0;
+	map->columns = 0;
+	map->map = NULL;
+	return (map);
 }

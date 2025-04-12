@@ -12,6 +12,13 @@
 
 #include "so_long.h"
 
+int	ft_check_file(int fd, char *file)
+{
+	if (!ft_strnstr(file, ".ber", ft_strlen(file)) || fd == -1)
+		return (1);
+	return (0);
+}
+
 int	ft_check_len(char *str)
 {
 	int	i;
