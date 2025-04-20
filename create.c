@@ -12,13 +12,15 @@
 
 #include "so_long.h"
 
-t_map	*ft_create_map()
+int	ft_create_map(char *file, t_map *map)
 {
-	t_map	*map;
+	int	total_lines;
 
-	map = (t_map*)malloc(sizeof(t_map));
-	map->rows = 0;
-	map->columns = 0;
-	map->map = NULL;
-	return (map);
+	total_lines = ft_count_line(file);
+	map.rows = total_lines;
+	map.columns = -1;
+	map.map = (char **)malloc(sizeof(char *) * total_lines);
+	if (!map.map)
+		return (1);
+	return (0);
 }

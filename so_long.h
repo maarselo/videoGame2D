@@ -29,10 +29,13 @@ typedef struct s_map
 }				t_map;
 
 //for cretae struct for count how many places
+int		ft_create_map(char *file, t_map *map);
 
 //entry and utilsutils
-int			ft_check_file(int fd, char *file);
 int			ft_check_len(char *str);
+int			ft_check_line(char *line);
+int			ft_count_line(char *file);
+int			ft_fill_map(char *file, char **map);
 
 void		ft_check_entry_to_map(char *file, t_map *map);
 //error
