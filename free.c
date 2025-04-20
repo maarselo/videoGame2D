@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+/*
 static void	ft_free_struct_map(t_map *map)
 {
 	int	i;
@@ -29,4 +29,4 @@ static void	ft_free_struct_map(t_map *map)
 void	ft_free(t_map *map)
 {
 	ft_free_struct_map(map);
-}
+}*/

@@ -12,32 +12,33 @@
 
 #include "so_long.h"
 
-static int	ft_count_line(int fd)
+static int	ft_count_line(char *file)
 {
+	int			fd = open(file, O_RDONLY);
+	printf("%s", get_next_line(fd));
+	/*
 	int			lines;
 	char	*line;
 
 	lines = 0;
-	line = get_next_line(fd);
-	while(line)
+	while((line = get_next_line(fd)))
 	{
 		lines++;
-		free(line);
-		line = get_next_line(fd);
+		//free(line);
 	}
-	return (lines);
+	return (lines);*/
+	return (0);
 }
 
 t_map	*ft_create_map(char *file)
 {
 	int			total_lines;
-	t_map	*map;
-	int			fd;
+	t_map		*map = NULL;
 
-	fd = open(file, O_RDONLY);
-	total_lines = ft_count_line(fd);
-	map = (t_map *)malloc(sizeof(t_map));
-	if (!total_lines || !map)
+	total_lines = ft_count_line(file);
+	printf("you:%dnigg", total_lines);
+	//map = (t_map *)malloc(sizeof(t_map));
+	/*if (!map)
 		return (NULL);
 	map->rows = total_lines;
 	map->columns = 0;
@@ -48,6 +49,6 @@ t_map	*ft_create_map(char *file)
 		return (NULL);
 	}
 	map->map[total_lines + 1] = NULL;
-	close(fd);
+	close(fd);*/
 	return (map);
 }

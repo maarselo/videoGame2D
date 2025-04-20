@@ -11,36 +11,16 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
-void	ft_print_map(char **map)
-{
-    int	i;
-    int	j;
-
-    if (!map)
-        return;
-    i = 0;
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            printf("%c", map[i][j]);
-            j++;
-        }
-        printf("\n"); // Salto de línea al final de cada fila
-        i++;
-    }
-}
 int	main(int argc, char **argv)
 {
-	t_map	map;
-	//t_places	*places;
+    char    *file;
+	t_map	*map;
 
 	if (argc != 2)
-		return (1);
-	ft_check_entry_to_map(argv[1], &map);
-	ft_print_map(map.map);
-	ft_free(map);
+        return (1);
+    file = argv[1];
+	ft_check_file(file);
+    map = ft_create_map(file);
+	//ft_free(map);
 }
