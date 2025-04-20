@@ -21,6 +21,6 @@ int	main(int argc, char **argv)
         return (1);
     file = argv[1];
 	ft_check_file(file);
-    map = ft_create_map(file);
+    map = ft_create_map(argv[1]);
 	//ft_free(map);
 }

@@ -16,8 +16,7 @@ static int	ft_count_line(char *file)
 {
 	int			fd = open(file, O_RDONLY);
 	printf("%s", get_next_line(fd));
-	/*
-	int			lines;
+	/*int			lines;
 	char	*line;
 
 	lines = 0;
@@ -27,6 +26,7 @@ static int	ft_count_line(char *file)
 		//free(line);
 	}
 	return (lines);*/
+	close(fd);
 	return (0);
 }
 
