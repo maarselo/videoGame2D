@@ -27,7 +27,7 @@ int	ft_check_len(char *str)
 int	ft_check_line(char *line)
 {
 	int				i;
-	char	*content_map;
+	char			*content_map;
 
 	if (!line)
 		return (1);
