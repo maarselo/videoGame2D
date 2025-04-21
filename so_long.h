@@ -28,16 +28,22 @@ typedef struct s_map
 	char		**map;
 }				t_map;
 
-//for cretae struct for count how many places
-t_map		*ft_create_map(char *file);
-
-//entry and utilsutils
+//entry and utils
 int			ft_check_len(char *str);
 int			ft_check_line(char *line);
 
 void		ft_check_file(char *file);
+
+//for create struct for count how many places
+t_map		*ft_create_map(char *file);
+
+//format
+void		ft_check_format(t_map *map);
+
 //error
 void		ft_error(void);
 //free
+void		ft_free_struct_map(t_map *map);
 void		ft_free(t_map *map);
+
 #endif

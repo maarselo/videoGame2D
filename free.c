@@ -20,7 +20,7 @@ void	ft_free_struct_map(t_map *map)
 	while (map->map[i])
 	{
 		free(map->map[i]);
-		i++;	
+		i++;
 	}
 	free(map->map);
 	free(map);
