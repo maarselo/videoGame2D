@@ -35,18 +35,17 @@ static int	ft_read_file(int fd)
 	if (!line)
 		return (1);
 	first_len = ft_check_len(line);
-	if (!first_len || ft_check_line(line))
+	if (!first_len)
 		to_return = 1;
-	free(line);
-	while ((line = get_next_line(fd)))
+	while (line)
 	{
 		if (ft_check_line(line) || ft_check_len(line) != first_len)
 			to_return = 1;
 		free(line);
+		line = get_next_line(fd);
 	}
 	return (to_return);
 }
-
 
 void	ft_check_file(char *file)
 {
