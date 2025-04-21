@@ -105,7 +105,7 @@ t_map	*ft_create_map(char *file)
 		free(map);
 		ft_error();
 	}
-	map->map[total_lines + 1] = NULL;
+	map->map[total_lines] = NULL;
 	ft_fill_lines(file, map);
 	ft_check_lines(map);
 	return (map);
