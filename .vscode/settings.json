@@ -3,6 +3,7 @@
         "stddef.h": "c",
         "limits.h": "c",
         "fcntl.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "so_long.h": "c"
     }
 }
