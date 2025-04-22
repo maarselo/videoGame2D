@@ -55,8 +55,11 @@ void	ft_check_file(char *file)
 	if (ft_check_file_is_correct(fd, file) || ft_read_file(fd))
 	{
 		if (fd != -1)
+		{
 			close(fd);
-		ft_error();
+			ft_error_message("⚠️ \033[1;33m Invalid map content.\033[0m\n");
+		}
+		ft_error_message("⚠️ \033[1;33m Invalid file.\033[0m\n");
 	}
 	close(fd);
 }
