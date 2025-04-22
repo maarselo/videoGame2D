@@ -25,6 +25,7 @@ typedef struct s_map
 {
 	int			rows;
 	int			columns;
+	int			collectionables;
 	char		**map;
 }				t_map;
 

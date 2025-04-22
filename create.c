@@ -99,6 +99,7 @@ t_map	*ft_create_map(char *file)
 	map->rows = total_lines;
 	columns = ft_get_columns(file);
 	map->columns = columns;
+	map->collectionables = 0;
 	map->map = malloc(sizeof(char *) * (total_lines + 1));
 	if (!map->map)
 	{
