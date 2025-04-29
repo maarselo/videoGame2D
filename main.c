@@ -32,13 +32,15 @@ void	print_map(t_map *map)
 int	main(int argc, char **argv)
 {
 	t_map	*map;
-	char	*file;
+	mlx_t	*mlx;
 
 	if (argc != 2)
 		return (1);
-	file = argv[1];
-	ft_check_file(file);
-	map = ft_create_map(file);
+	ft_check_file(argv[1]);
+	map = ft_create_map(argv[1]);
 	ft_check_format(map);
+	mlx = mlx_init(800, 600, "HELLO WORLD", true);
+	mlx_loop(mlx);
+	
 	ft_free(map);
 }
