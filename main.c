@@ -39,7 +39,6 @@ int	main(int argc, char **argv)
 	file = argv[1];
 	ft_check_file(file);
 	map = ft_create_map(file);
-	//ft_check_format(map);
-	print_map(map);
+	ft_check_format(map);
 	ft_free(map);
 }
