@@ -7,6 +7,10 @@ OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR=./Libft
 LIBFT=$(LIBFT_DIR)/libft.a
+MLX_DIR=./MLX42
+MLX=$(MLX_DIR)/build/libmlx42.a
+MLX_HEADER=$(MLX_DIR)/include
+MLX_FLAGS=-ldl -lglfw -pthread -lm
 
 CC = cc -g
 CFLAGS = -Wall -Werror -Wextra
@@ -27,7 +31,7 @@ $(LIBFT):
 
 $(NAME): $(OBJS) $(LIBFT) $(HEADER) Makefile
 	@echo "$(GREEN)✔ Compilando $(NAME)...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(INCLUDES_MLX) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "$(GREEN)	 Compilación completada!$(RESET)"
 
 clean :
