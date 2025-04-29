@@ -14,6 +14,13 @@
 
 void	ft_error(void)
 {
-	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd("\033[1;31mError\n", 1);
+	exit(1);
+}
+
+void	ft_error_message(char *message)
+{
+	ft_putstr_fd("\033[1;31mError\033[0m\n", 1);
+	ft_putstr_fd(message, 1);
 	exit(1);
 }
