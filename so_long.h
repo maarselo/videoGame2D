@@ -15,11 +15,14 @@
 
 //incluye malloc, unistd, stdfdeff for size, limits.h
 # include "./Libft/libft.h"
+# include "./MLX42/MLX42.h"
+
 # include <stdlib.h> //malloc
 # include <fcntl.h> //for open file
 # include <limits.h> //int max
 # include <unistd.h> //write
 # include <stdio.h> //for test
+
 
 typedef struct s_map
 {
