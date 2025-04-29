@@ -23,6 +23,8 @@
 # include <unistd.h> //write
 # include <stdio.h> //for test
 
+# define PIXELS_W 32
+# define PIXELS_H 32
 
 typedef struct s_map
 {
@@ -47,6 +49,9 @@ int			ft_check_horizontal(t_map *map);
 int			ft_check_vertical(t_map *map);
 
 void		ft_check_format(t_map *map);
+
+//create the window
+mlx_t		*ft_init_window(t_map *map);
 
 //error
 void		ft_error(void);

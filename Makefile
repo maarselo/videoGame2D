@@ -2,7 +2,7 @@ NAME = so_long
 
 HEADER = so_long.h
 SRCS = error.c entry.c utilsEntry.c create.c free.c main.c \
-			format.c utilsFormat.c
+			format.c utilsFormat.c window.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR=./Libft

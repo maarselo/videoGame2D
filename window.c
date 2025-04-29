@@ -1,47 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvillavi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 14:30:32 by mvillavi          #+#    #+#             */
-/*   Updated: 2025/04/10 14:30:33 by mvillavi         ###   ########.fr       */
+/*   Created: 2025/04/29 18:15:57 by mvillavi          #+#    #+#             */
+/*   Updated: 2025/04/29 18:15:59 by mvillavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	print_map(t_map *map)
+mlx_t	*ft_init_window(t_map *map)
 {
-	int	i;
-
-	if (!map || !map->map)
-	{
-		printf("El mapa no está inicializado.\n");
-		return ;
-	}
-	i = 0;
-	while (map->map[i])
-	{
-		printf("%s\n", map->map[i]);
-		i++;
-	}
-}
-
-int	main(int argc, char **argv)
-{
-	t_map	*map;
 	mlx_t	*mlx;
+	int			weight_to_pixels;
+	int			height_to_pixels;
 
-	if (argc != 2)
-		return (1);
-	ft_check_file(argv[1]);
-	map = ft_create_map(argv[1]);
-	ft_check_format(map);
+	weight_to_pixels = map->columns * PIXELS_W;
+	height_to_pixels = map->rows * PIXELS_H;
+	mlx = mlx_init(weight_to_pixels, height_to_pixels, "so_long", false);
 
-	mlx = ft_init_window(map);
-	mlx_loop(mlx);
-	
-	ft_free(map);
+	return (mlx);
 }
