@@ -39,10 +39,16 @@ void		ft_check_file(char *file);
 t_map		*ft_create_map(char *file);
 
 //format
+int			ft_check_line_quantity(char *line, char c);
+int			ft_check_horizontal(t_map *map);
+int			ft_check_vertical(t_map *map);
+
 void		ft_check_format(t_map *map);
 
 //error
 void		ft_error(void);
+void		ft_error_message(char *message);
+
 //free
 void		ft_free_struct_map(t_map *map);
 void		ft_free(t_map *map);
