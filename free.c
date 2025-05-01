@@ -31,7 +31,29 @@ void	ft_free_struct_map(t_map *map)
 	free(map);
 }
 
+void	ft_free_struct_game(t_game *game)
+{
+	if (!game)
+		return;
+	if (game->mlx)
+		mlx_terminate(game->mlx);
+	if (game->map)
+		ft_free_struct_map(game->map);
+	if (game->wall)
+		mlx_delete_image(game->mlx, game->wall);
+	if (game->floor)
+		mlx_delete_image(game->mlx, game->floor);
+	if (game->character)
+		mlx_delete_image(game->mlx, game->character);
+	if (game->collectionable)
+		mlx_delete_image(game->mlx, game->collectionable);
+	if (game->exit)
+		mlx_delete_image(game->mlx, game->exit);
+	free(game);
+}
+
+
 void	ft_free(t_map *map)
 {
-	ft_free_struct_map(map);
+	ft_free_struct_game(map);
 }
