@@ -1,19 +1,26 @@
 NAME = so_long
 
-HEADER = so_long.h
-SRCS = error.c entry.c utilsEntry.c create_map.c free.c main.c \
-			format.c utilsFormat.c createGame.c utilsCreateGame.c
-OBJS = $(SRCS:.c=.o)
-
+SRC_DIR = src
+INCLUDE_DIR = include
+OBJ_DIR = obj
 LIBFT_DIR=./Libs/Libft
-LIBFT=$(LIBFT_DIR)/libft.a
 MLX_DIR=./Libs/MLX42
-MLX=$(MLX_DIR)/libmlx42.a
+
+HEADER = $(INCLUDE_DIR)/so_long.h
+SRCS = $(SRC_DIR)/error.c $(SRC_DIR)/entry.c $(SRC_DIR)/utilsEntry.c \
+		$(SRC_DIR)/create_map.c $(SRC_DIR)/free.c $(SRC_DIR)/main.c \
+		$(SRC_DIR)/format.c $(SRC_DIR)/utilsFormat.c $(SRC_DIR)/createGame.c \
+		$(SRC_DIR)/utilsCreateGame.c
+
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+LIBFT=$(LIBFT_DIR)/libft.a
+MLX=$(MLX_DIR)/build/libmlx42.a
 MLX_HEADER=$(MLX_DIR)/include
 MLX_FLAGS=-ldl -lglfw -pthread -lm
 
 CC = cc -g
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE_DIR)
 RM = rm -rf
 
 GREEN = \033[1;32m
@@ -34,10 +41,17 @@ $(NAME): $(OBJS) $(LIBFT) $(HEADER) Makefile
 	@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(INCLUDES_MLX) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "$(GREEN)	 Compilación completada!$(RESET)"
 
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	@echo "$(YELLOW)Compilando $<...$(RESET)"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 clean :
 	@echo "$(RED)  Limpiando objetos...$(RESET)"
 	@make -C $(LIBFT_DIR) clean
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJ_DIR)
 
 fclean: clean
 	@echo "$(RED)  Borrando ejecutable...$(RESET)"
