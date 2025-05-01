@@ -24,3 +24,18 @@ void	ft_error_message(char *message)
 	ft_putstr_fd(message, 1);
 	exit(1);
 }
+
+//Use for firsts malloc
+void	ft_error_message_free_map(t_map *map)
+{
+	if (map)
+		ft_free_struct_map(map);
+	ft_error();
+}
+
+void	ft_error_message_free_game(t_game *game)
+{
+	if (game)
+		ft_free_struct_game(game);
+	ft_error();
+}
