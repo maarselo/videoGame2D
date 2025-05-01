@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 //incluye malloc, unistd, stdfdeff for size, limits.h
-# include "./Libft/libft.h"
-# include "./MLX42/include/MLX42/MLX42.h"
+# include "./Libs/Libft/libft.h"
+# include "./Libs/MLX42/include/MLX42/MLX42.h"
 
 # include <stdlib.h> //malloc
 # include <fcntl.h> //for open file

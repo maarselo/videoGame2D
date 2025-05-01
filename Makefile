@@ -5,10 +5,10 @@ SRCS = error.c entry.c utilsEntry.c create_map.c free.c main.c \
 			format.c utilsFormat.c createGame.c utilsCreateGame.c
 OBJS = $(SRCS:.c=.o)
 
-LIBFT_DIR=./Libft
+LIBFT_DIR=./Libs/Libft
 LIBFT=$(LIBFT_DIR)/libft.a
-MLX_DIR=./MLX42
-MLX=$(MLX_DIR)/build/libmlx42.a
+MLX_DIR=./Libs/MLX42
+MLX=$(MLX_DIR)/libmlx42.a
 MLX_HEADER=$(MLX_DIR)/include
 MLX_FLAGS=-ldl -lglfw -pthread -lm
 
