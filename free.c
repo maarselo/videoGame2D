@@ -35,8 +35,6 @@ void	ft_free_struct_game(t_game *game)
 {
 	if (!game)
 		return;
-	if (game->mlx)
-		mlx_terminate(game->mlx);
 	if (game->map)
 		ft_free_struct_map(game->map);
 	if (game->wall)
@@ -49,6 +47,8 @@ void	ft_free_struct_game(t_game *game)
 		mlx_delete_image(game->mlx, game->collectionable);
 	if (game->exit)
 		mlx_delete_image(game->mlx, game->exit);
+	if (game->mlx)
+		mlx_terminate(game->mlx);
 	free(game);
 }
 
