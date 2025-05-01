@@ -53,7 +53,7 @@ void	ft_free_struct_game(t_game *game)
 }
 
 
-void	ft_free(t_map *map)
+void	ft_free(t_game *game)
 {
-	ft_free_struct_game(map);
+	ft_free_struct_game(game);
 }
