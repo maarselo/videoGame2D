@@ -14,6 +14,8 @@
 # define LIBFT_H
 # define BUFFER_SIZE 100
 
+# include "printf.h"
+
 # include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
@@ -74,5 +76,7 @@ t_list	*ft_lstnew(void *content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 char	*get_next_line(int fd);
+
+int		ft_printf(char const *s, ...);
 
 #endif
