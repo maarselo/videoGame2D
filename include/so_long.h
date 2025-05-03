@@ -33,15 +33,32 @@ typedef struct s_map
 	char		**map;
 }				t_map;	
 
+//This is for animations
+typedef struct s_character
+{
+	mlx_image_t	*initial;
+	mlx_image_t	*up;
+	mlx_image_t	*left;
+	mlx_image_t	*right;
+	mlx_image_t	*down;
+}			t_character;
+
+typedef struct s_exit
+{
+	mlx_image_t	*close;
+	mlx_image_t	*open;
+}			t_exit;
+///////////////////
+
 typedef struct s_game
 {
 	t_map		*map;
 	mlx_t		*mlx;
 	mlx_image_t	*wall;
 	mlx_image_t	*floor;
-	mlx_image_t	*character;
+	t_character	*character;
 	mlx_image_t	*collectionable;
-	mlx_image_t	*exit;
+	t_exit		*exit;
 }			t_game;
 
 //entry and utils
@@ -63,16 +80,25 @@ void		ft_check_format(t_map *map);
 
 //create game and utils
 mlx_texture_t	*ft_png_to_texture(char *path, t_game *game);
+t_character		*ft_init_characters_images(t_game *game);
+t_exit			*ft_init_exit_images(t_game *game);
 
 t_game		*ft_create_game(t_map *map);
 
 //error
 void		ft_error(void);
 void		ft_error_message(char *message);
-void		ft_error_message_free_map(t_map *map);
-void		ft_error_message_free_game(t_game *game);
 
-//free
+//Error mixed with free
+void		ft_error_free_map(t_map *map);
+void		ft_error_free_game(t_game *game);
+//If chracter struct fails, i need liberate the struct and game and the same with exit
+void		ft_error_character(t_character *character, t_game *game);
+void		ft_error_exit(t_exit *exit, t_game *game);
+//This is for custonthe message if the game fails
+void		ft_free_game_message(t_game *game, char *message);
+
+//finally free and for all
 void		ft_free_struct_map(t_map *map);
 void		ft_free_struct_game(t_game *game);
 void		ft_free(t_game *game);
