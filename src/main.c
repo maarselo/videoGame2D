@@ -12,28 +12,6 @@
 
 #include "so_long.h"
 
-void	ft_draw_map(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < game->map->rows)
-	{
-		j = 0;
-		while (j < game->map->columns)
-		{
-			mlx_image_to_window(game->mlx, game->floor, j * PIXELS, i * PIXELS);
-			if (game->map->map[i][j] == '1')
-				mlx_image_to_window(game->mlx, game->wall, j * PIXELS, i * PIXELS);
-			if (game->map->map[i][j] == 'E')
-				mlx_image_to_window(game->mlx, game->exit->close, j * PIXELS, i * PIXELS);
-			j++;
-		}
-		i++;
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_map	*map;
@@ -45,8 +23,6 @@ int	main(int argc, char **argv)
 	map = ft_create_map(argv[1]);
 	ft_check_format(map);
 	game = ft_create_game(map);
-	ft_draw_map(game);
-	mlx_loop(game->mlx);
-	//ft_init_game()
+	ft_init_game(game);
 	ft_free(game);
 }
