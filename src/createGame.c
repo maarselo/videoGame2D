@@ -12,6 +12,29 @@
 
 #include "so_long.h"
 
+static void	ft_set_coordinates(t_game *game)
+{
+	int	x;
+	int y;
+
+	x = 0;
+	while (x < game->map->rows)
+	{
+		y = 0;
+		while (y < game->map->columns)
+		{
+			if (game->map->map[x][y] == 'P')
+			{
+				game->x = x;
+				game->y = y;
+				return ;
+			}
+			y++;
+		}
+		x++;
+	}
+}
+
 static mlx_t	*ft_init_window(t_game *game)
 {
 	mlx_t			*mlx;
@@ -57,6 +80,7 @@ t_game	*ft_create_game(t_map *map)
 	if (!game)
 		ft_error_free_map(map);
 	game->map = map;
+	ft_set_coordinates(game);
 	game->mlx = ft_init_window(game);
 	game->wall = NULL;
 	game->floor = NULL;
