@@ -52,6 +52,8 @@ typedef struct s_exit
 
 typedef struct s_game
 {
+	int			x;
+	int			y;
 	t_map		*map;
 	mlx_t		*mlx;
 	mlx_image_t	*wall;
@@ -83,6 +85,16 @@ t_character			*ft_init_characters_images(t_game *game);
 t_exit				*ft_init_exit_images(t_game *game);
 
 t_game		*ft_create_game(t_map *map);
+
+
+//GAME
+//utils hook
+int			ft_check_new_position(int x, int y, t_game *game);
+void		ft_draw_moves(int new_x, int new_y, char *direction, t_game *game);
+void		ft_close(t_game *game);
+void		ft_key_hook(mlx_key_data_t key, void *game);
+
+void		ft_init_game(t_game *game);
 
 //error
 void		ft_error(void);
