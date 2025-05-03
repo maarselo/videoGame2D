@@ -22,7 +22,7 @@ static mlx_t	*ft_init_window(t_game *game)
 	height_to_pixels = game->map->rows * PIXELS;
 	mlx = mlx_init(weight_to_pixels, height_to_pixels, "so_long", true);
 	if (!mlx)
-		ft_error_message_free_game(game);
+		ft_error_free_game(game);
 	return (mlx);
 }
 
@@ -30,24 +30,23 @@ static void	ft_init_images(t_game *game)
 {
 	mlx_texture_t	*texture;
 
-	texture = ft_png_to_texture("./Images/wall1.png", game);
+	texture = mlx_load_png("./Images/wall.png");
 	game->wall = mlx_texture_to_image(game->mlx, texture);
 	mlx_delete_texture(texture);
-	texture = ft_png_to_texture("./Images/floor.png", game);
+	if (!game->wall)
+		ft_free_game_message(game,"\033[1;33m🔍 Can't find wall PNG\033[0m\n");
+	texture = mlx_load_png("./Images/floor.png");
 	game->floor = mlx_texture_to_image(game->mlx, texture);
 	mlx_delete_texture(texture);
-	//texture = ft_png_to_texture(" ", game);
-	//game->character = mlx_texture_to_image(game->mlx, texture);
-	//ft_set_character_positions();
-	//mlx_delete_texture(texture);
-	//texture = ft_png_to_texture(" ", game);
-	//game->collectionable = mlx_texture_to_image(game->mlx, texture);
-	//ft_set_collectionable_positions();
-	//mlx_delete_texture(texture);
-	texture = ft_png_to_texture("./Images/Exit/exit_close.png", game);
-	game->exit = mlx_texture_to_image(game->mlx, texture);
-	//ft_set_exit_positions();
+	if (!game->floor)
+		ft_free_game_message(game,"\033[1;33m🔍 Can't find floor PNG\033[0m\n");
+	texture = mlx_load_png("./Images/Collectionable/diamond.png");
+	game->collectionable = mlx_texture_to_image(game->mlx, texture);
 	mlx_delete_texture(texture);
+	if (!game->collectionable)
+		ft_free_game_message(game,"\033[1;33m🔍 Can't find get PNG\033[0m\n");
+	game->character = ft_init_characters_images(game);
+	game->exit = ft_init_exit_images(game);
 }
 
 t_game	*ft_create_game(t_map *map)
@@ -56,12 +55,14 @@ t_game	*ft_create_game(t_map *map)
 
 	game = (t_game*)malloc(sizeof(t_game));
 	if (!game)
-		ft_error_message_free_map(map);
+		ft_error_free_map(map);
 	game->map = map;
 	game->mlx = ft_init_window(game);
+	game->wall = NULL;
+	game->floor = NULL;
+	game->character = NULL;
+	game->collectionable = NULL;
+	game->exit = NULL;
 	ft_init_images(game);
-	if (!game->wall || !game->floor //|| !game->character || !game->collectionable
-			|| !game->exit)
-		ft_free_struct_game(game);
 	return (game);
 }

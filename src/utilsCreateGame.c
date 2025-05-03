@@ -12,17 +12,50 @@
 
 #include "so_long.h"
 
-mlx_texture_t	*ft_png_to_texture(char *path, t_game *game)
+t_character *ft_init_characters_images(t_game *game)
 {
-	mlx_texture_t	*to_image;
+	t_character	*character;
+	mlx_texture_t *texture_tmp;
 
-	to_image = mlx_load_png(path);
-	if (!to_image)
-	{
-		ft_free_struct_game(game);
-		ft_error_message("\033[1;33m🔍 Can't find PNG\033[0m\n");
-	}
-	return (to_image);
+	character = (t_character *)malloc(sizeof(t_character));
+	if (!character)
+		ft_error_free_game(game);
+	texture_tmp = mlx_load_png("./Images/Character/initial.png");
+	character->initial = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	texture_tmp = mlx_load_png("./Images/Character/up.png");
+	character->up = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	texture_tmp = mlx_load_png("./Images/Character/left.png");
+	character->left = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	texture_tmp = mlx_load_png("./Images/Character/right.png");
+	character->right = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	texture_tmp = mlx_load_png("./Images/Character/initial.png");
+	character->down = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	if (!character->initial || !character->up || !character->left
+		|| !character->right || !character->down)
+		ft_error_character(character, game);
+	return (character);
 }
 
+t_exit *ft_init_exit_images(t_game *game)
+{
+	t_exit	*exit;
+	mlx_texture_t *texture_tmp;
 
+	exit = (t_exit *)malloc(sizeof(t_exit));
+	if (!exit)
+		ft_error_free_game(game);
+	texture_tmp = mlx_load_png("./Images/Exit/close.png");
+	exit->close = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	texture_tmp = mlx_load_png("./Images/Exit/open1.png");
+	exit->open = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	if (!exit->close || !exit->open)
+		ft_error_exit(exit, game);
+	return (exit);
+}
