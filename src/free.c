@@ -24,11 +24,43 @@ void	ft_free_struct_map(t_map *map)
 		while (map->map[i])
 		{
 			free(map->map[i]);
+			map->map[i] = NULL;
 			i++;
 		}
 		free(map->map);
+		map->map = NULL;
 	}
 	free(map);
+}
+
+static void	ft_free_struct_character(t_game *game)
+{
+    if (!game->character)
+        return;
+    if (game->character->initial)
+        mlx_delete_image(game->mlx, game->character->initial);
+    if (game->character->up)
+        mlx_delete_image(game->mlx, game->character->up);
+    if (game->character->left)
+        mlx_delete_image(game->mlx, game->character->left);
+    if (game->character->right)
+        mlx_delete_image(game->mlx, game->character->right);
+    if (game->character->down)
+        mlx_delete_image(game->mlx, game->character->down);
+    free(game->character);
+	game->character = NULL;
+}
+
+static void	ft_free_struct_exit(t_game *game)
+{
+    if (!game->exit)
+        return;
+    if (game->exit->close)
+        mlx_delete_image(game->mlx, game->exit->close);
+    if (game->exit->open)
+        mlx_delete_image(game->mlx, game->exit->open);
+    free(game->exit);
+	game->exit = NULL;
 }
 
 void	ft_free_struct_game(t_game *game)
@@ -42,11 +74,11 @@ void	ft_free_struct_game(t_game *game)
 	if (game->floor)
 		mlx_delete_image(game->mlx, game->floor);
 	if (game->character)
-		mlx_delete_image(game->mlx, game->character);
+		ft_free_struct_character(game);
 	if (game->collectionable)
 		mlx_delete_image(game->mlx, game->collectionable);
 	if (game->exit)
-		mlx_delete_image(game->mlx, game->exit);
+		ft_free_struct_exit(game);
 	if (game->mlx)
 		mlx_terminate(game->mlx);
 	free(game);
