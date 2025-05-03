@@ -10,7 +10,7 @@ HEADER = $(INCLUDE_DIR)/so_long.h
 SRCS = $(SRC_DIR)/error.c $(SRC_DIR)/entry.c $(SRC_DIR)/utilsEntry.c \
 		$(SRC_DIR)/create_map.c $(SRC_DIR)/free.c $(SRC_DIR)/main.c \
 		$(SRC_DIR)/format.c $(SRC_DIR)/utilsFormat.c $(SRC_DIR)/createGame.c \
-		$(SRC_DIR)/utilsCreateGame.c
+		$(SRC_DIR)/utilsCreateGame.c $(SRC_DIR)/errorFree.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
