@@ -32,7 +32,7 @@ t_character	*ft_init_characters_images(t_game *game)
 	texture_tmp = mlx_load_png("./Images/Character/right.png");
 	character->right = mlx_texture_to_image(game->mlx, texture_tmp);
 	mlx_delete_texture(texture_tmp);
-	texture_tmp = mlx_load_png("./Images/Character/initial.png");
+	texture_tmp = mlx_load_png("./Images/Character/down.png");
 	character->down = mlx_texture_to_image(game->mlx, texture_tmp);
 	mlx_delete_texture(texture_tmp);
 	if (!character->initial || !character->up || !character->left
