@@ -12,10 +12,10 @@
 
 #include "so_long.h"
 
-t_character *ft_init_characters_images(t_game *game)
+t_character	*ft_init_characters_images(t_game *game)
 {
-	t_character	*character;
-	mlx_texture_t *texture_tmp;
+	t_character		*character;
+	mlx_texture_t	*texture_tmp;
 
 	character = (t_character *)malloc(sizeof(t_character));
 	if (!character)
@@ -41,10 +41,10 @@ t_character *ft_init_characters_images(t_game *game)
 	return (character);
 }
 
-t_exit *ft_init_exit_images(t_game *game)
+t_exit	*ft_init_exit_images(t_game *game)
 {
-	t_exit	*exit;
-	mlx_texture_t *texture_tmp;
+	t_exit			*exit;
+	mlx_texture_t	*texture_tmp;
 
 	exit = (t_exit *)malloc(sizeof(t_exit));
 	if (!exit)

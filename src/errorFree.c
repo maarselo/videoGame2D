@@ -32,17 +32,15 @@ void	ft_error_character(t_character *character, t_game *game)
 	if (!character)
 		return ;
 	if (character->initial)
-        mlx_delete_image(game->mlx, character->initial);
-    if (character->up)
-        mlx_delete_image(game->mlx, character->up);
-    if (character->left)
-        mlx_delete_image(game->mlx, character->left);
-    if (character->right)
-        mlx_delete_image(game->mlx, character->right);
-    if (character->down)
-	{
-        mlx_delete_image(game->mlx, character->down);
-	}
+		mlx_delete_image(game->mlx, character->initial);
+	if (character->up)
+		mlx_delete_image(game->mlx, character->up);
+	if (character->left)
+		mlx_delete_image(game->mlx, character->left);
+	if (character->right)
+		mlx_delete_image(game->mlx, character->right);
+	if (character->down)
+		mlx_delete_image(game->mlx, character->down);
 	if (game)
 		ft_free_struct_game(game);
 	free(character);
@@ -52,14 +50,12 @@ void	ft_error_character(t_character *character, t_game *game)
 
 void	ft_error_exit(t_exit *exit, t_game *game)
 {
-    if (!exit)
-        return;
-    if (exit->close)
-        mlx_delete_image(game->mlx, exit->close);
-    if (exit->open)
-	{
-        mlx_delete_image(game->mlx, exit->open);
-	}
+	if (!exit)
+		return ;
+	if (exit->close)
+		mlx_delete_image(game->mlx, exit->close);
+	if (exit->open)
+		mlx_delete_image(game->mlx, exit->open);
 	if (game)
 		ft_free_struct_game(game);
 	free(exit);

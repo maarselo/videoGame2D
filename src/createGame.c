@@ -15,8 +15,8 @@
 static mlx_t	*ft_init_window(t_game *game)
 {
 	mlx_t			*mlx;
-	int			weight_to_pixels;
-	int			height_to_pixels;
+	int				weight_to_pixels;
+	int				height_to_pixels;
 
 	weight_to_pixels = game->map->columns * PIXELS;
 	height_to_pixels = game->map->rows * PIXELS;
@@ -34,17 +34,17 @@ static void	ft_init_images(t_game *game)
 	game->wall = mlx_texture_to_image(game->mlx, texture);
 	mlx_delete_texture(texture);
 	if (!game->wall)
-		ft_free_game_message(game,"\033[1;33m🔍 Can't find wall PNG\033[0m\n");
+		ft_free_game_message(game, "\033[1;33m🔍 Can't find wall PNG\033[0m\n");
 	texture = mlx_load_png("./Images/floor.png");
 	game->floor = mlx_texture_to_image(game->mlx, texture);
 	mlx_delete_texture(texture);
 	if (!game->floor)
-		ft_free_game_message(game,"\033[1;33m🔍 Can't find floor PNG\033[0m\n");
+		ft_free_game_message(game, "\033[1;33m🔍 Can't find floor PNG\033[0m\n");
 	texture = mlx_load_png("./Images/Collectionable/diamond.png");
 	game->collectionable = mlx_texture_to_image(game->mlx, texture);
 	mlx_delete_texture(texture);
 	if (!game->collectionable)
-		ft_free_game_message(game,"\033[1;33m🔍 Can't find get PNG\033[0m\n");
+		ft_free_game_message(game, "\033[1;33m🔍 Can't find get PNG\033[0m\n");
 	game->character = ft_init_characters_images(game);
 	game->exit = ft_init_exit_images(game);
 }
@@ -53,7 +53,7 @@ t_game	*ft_create_game(t_map *map)
 {
 	t_game	*game;
 
-	game = (t_game*)malloc(sizeof(t_game));
+	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		ft_error_free_map(map);
 	game->map = map;

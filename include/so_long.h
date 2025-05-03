@@ -77,11 +77,10 @@ int			ft_check_vertical(t_map *map);
 
 void		ft_check_format(t_map *map);
 
-
 //create game and utils
-mlx_texture_t	*ft_png_to_texture(char *path, t_game *game);
-t_character		*ft_init_characters_images(t_game *game);
-t_exit			*ft_init_exit_images(t_game *game);
+mlx_texture_t		*ft_png_to_texture(char *path, t_game *game);
+t_character			*ft_init_characters_images(t_game *game);
+t_exit				*ft_init_exit_images(t_game *game);
 
 t_game		*ft_create_game(t_map *map);
 
@@ -92,7 +91,8 @@ void		ft_error_message(char *message);
 //Error mixed with free
 void		ft_error_free_map(t_map *map);
 void		ft_error_free_game(t_game *game);
-//If chracter struct fails, i need liberate the struct and game and the same with exit
+//If chracter struct fails, i need liberate the struct and game 
+//and the same with exit
 void		ft_error_character(t_character *character, t_game *game);
 void		ft_error_exit(t_exit *exit, t_game *game);
 //This is for custonthe message if the game fails
