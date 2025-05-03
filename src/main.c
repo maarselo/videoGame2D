@@ -12,23 +12,6 @@
 
 #include "so_long.h"
 
-void	print_map(t_map *map)
-{
-	int	i;
-
-	if (!map || !map->map)
-	{
-		printf("El mapa no está inicializado.\n");
-		return ;
-	}
-	i = 0;
-	while (map->map[i])
-	{
-		printf("%s\n", map->map[i]);
-		i++;
-	}
-}
-
 void	ft_draw_map(t_game *game)
 {
 	int	i;
@@ -40,12 +23,11 @@ void	ft_draw_map(t_game *game)
 		j = 0;
 		while (j < game->map->columns)
 		{
+			mlx_image_to_window(game->mlx, game->floor, j * PIXELS, i * PIXELS);
 			if (game->map->map[i][j] == '1')
 				mlx_image_to_window(game->mlx, game->wall, j * PIXELS, i * PIXELS);
-			if (game->map->map[i][j] == '0')
-				mlx_image_to_window(game->mlx, game->floor, j * PIXELS, i * PIXELS);
 			if (game->map->map[i][j] == 'E')
-				mlx_image_to_window(game->mlx, game->exit, j * PIXELS, i * PIXELS);
+				mlx_image_to_window(game->mlx, game->exit->close, j * PIXELS, i * PIXELS);
 			j++;
 		}
 		i++;
@@ -65,5 +47,6 @@ int	main(int argc, char **argv)
 	game = ft_create_game(map);
 	ft_draw_map(game);
 	mlx_loop(game->mlx);
+	//ft_init_game()
 	ft_free(game);
 }
