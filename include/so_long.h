@@ -23,6 +23,12 @@
 
 # define PIXELS 32
 
+# define WALL "wall"
+# define FLOOR "floor"
+# define COLLECTIONABLE "collectionable"
+# define CHARACTER "character"
+# define EXIT "exit"
+
 typedef struct s_map
 {
 	int			rows;
@@ -71,6 +77,9 @@ int			ft_check_horizontal(t_map *map);
 int			ft_check_vertical(t_map *map);
 void		ft_check_format(t_map *map);
 
+mlx_image_t	*ft_load_image(char *type, char *path, t_game *game);
+mlx_image_t	*ft_character(char *path, t_game *game, t_character *character);
+mlx_image_t	*ft_exit(char *path, t_game *game, t_exit *exit);
 t_character	*ft_init_characters_images(t_game *game);
 t_exit		*ft_init_exit_images(t_game *game);
 t_game		*ft_create_game(t_map *map);
@@ -91,6 +100,9 @@ void		ft_error_message(char *message);
 void		ft_error_free_map(t_map *map);
 void		ft_error_free_game(t_game *game);
 
+void		ft_error_wall(t_game *game);
+void		ft_error_floor(t_game *game);
+void		ft_error_collectionable(t_game *game);
 void		ft_error_character(t_character *character, t_game *game);
 void		ft_error_exit(t_exit *exit, t_game *game);
 
