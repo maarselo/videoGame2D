@@ -61,7 +61,7 @@ void	ft_draw_moves(int new_x, int new_y, char *direction, t_game *game)
 		game->x * PIXELS);
 	if (game->map->map[game->x][game->y] == 'E')
 		mlx_image_to_window(game->mlx, game->exit->close, game->y * PIXELS,
-				game->x * PIXELS);
+			game->x * PIXELS);
 	if (game->map->map[game->x][game->y] != 'E')
 		game->map->map[game->x][game->y] = '0';
 	if (game->map->map[new_x][new_y] != 'E')
