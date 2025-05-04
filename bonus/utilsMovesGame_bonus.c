@@ -64,12 +64,13 @@ void	ft_draw_moves(int new_x, int new_y, char *direction, t_game *game)
 			game->x * PIXELS);
 	if (game->map->map[game->x][game->y] != 'E')
 		game->map->map[game->x][game->y] = '0';
-	if (game->map->map[new_x][new_y] != 'E')
+	if (game->map->map[new_x][new_y] != 'E' && game->map->map[new_x][new_y] != 'A')
 		game->map->map[new_x][new_y] = 'P';
 	game->x = new_x;
 	game->y = new_y;
 	ft_draw_character(direction, game);
 	if (game->map->collectionables == 0)
 		ft_open_exit(game);
-	ft_check_exit(game->x, game->y, game);
+	ft_check_enemy(game);
+	ft_check_exit(game);
 }
