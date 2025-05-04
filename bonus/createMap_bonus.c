@@ -100,6 +100,7 @@ t_map	*ft_create_map(char *file)
 	columns = ft_get_columns(file);
 	map->columns = columns;
 	map->collectionables = 0;
+	map->enemies = 0;
 	map->map = malloc(sizeof(char *) * (total_lines + 1));
 	if (!map->map)
 	{
@@ -109,5 +110,6 @@ t_map	*ft_create_map(char *file)
 	map->map[total_lines] = NULL;
 	ft_fill_lines(file, map);
 	ft_check_lines(map);
+	ft_count_enemies(map);
 	return (map);
 }

@@ -11,3 +11,22 @@
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	ft_count_enemies(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < map->rows)
+	{
+		j = 0;
+		while (j < map->columns)
+		{
+			if (map->map[i][j] == 'A')
+				map->enemies++;
+			j++;
+		}
+		i++;
+	}
+}
