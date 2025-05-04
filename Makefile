@@ -33,6 +33,8 @@ LIBFT_DIR = ./Libs/Libft
 MLX_DIR = ./Libs/MLX42
 
 HEADER = $(INCLUDE_DIR)/so_long.h
+BONUS_HEADER = $(INCLUDE_DIR)/so_long_bonus.h
+
 
 # Fuentes normales
 SRC_FILES = error.c entry.c utilsEntry.c createMap.c free.c main.c format.c \
@@ -75,7 +77,7 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 	@make -C $(LIBFT_DIR) bonus
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT) $(HEADER) Makefile
 	@echo "$(GREEN)✔ Compilando $(NAME)...$(RESET)"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 	@echo "$(GREEN)   Compilación completada!$(RESET)"
@@ -89,7 +91,7 @@ $(OBJ_DIR):
 
 bonus: $(BONUS)
 
-$(BONUS): $(OBJS_BONUS) $(LIBFT)
+$(BONUS): $(OBJS_BONUS) $(LIBFT) $(BONUS_HEADER) Makefile
 	@echo "$(GREEN)✔ Compilando $(BONUS)...$(RESET)"
 	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(BONUS)
 	@echo "$(GREEN)   Compilación BONUS completada!$(RESET)"
