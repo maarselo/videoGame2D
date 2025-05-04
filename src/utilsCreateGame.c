@@ -52,7 +52,7 @@ t_exit	*ft_init_exit_images(t_game *game)
 	texture_tmp = mlx_load_png("./Images/Exit/close.png");
 	exit->close = mlx_texture_to_image(game->mlx, texture_tmp);
 	mlx_delete_texture(texture_tmp);
-	texture_tmp = mlx_load_png("./Images/Exit/open1.png");
+	texture_tmp = mlx_load_png("./Images/Exit/open.png");
 	exit->open = mlx_texture_to_image(game->mlx, texture_tmp);
 	mlx_delete_texture(texture_tmp);
 	if (!exit->close || !exit->open)

@@ -4,6 +4,7 @@
         "limits.h": "c",
         "fcntl.h": "c",
         "libft.h": "c",
-        "so_long.h": "c"
+        "so_long.h": "c",
+        "so_long_bonus.h": "c"
     }
 }
