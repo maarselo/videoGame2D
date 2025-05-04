@@ -9,17 +9,6 @@
 #    Updated: 2025/05/03 03:16:47 by mvillavi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mvillavi <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/03 03:16:45 by mvillavi          #+#    #+#              #
-#    Updated: 2025/05/04 00:00:00 by mvillavi         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 NAME = so_long
 BONUS = so_long_bonus
@@ -45,8 +34,9 @@ SRC_FILES = error.c entry.c utilsEntry.c createMap.c free.c main.c format.c \
 BONUS_FILES = error_bonus.c entry_bonus.c utilsEntry_bonus.c createMap_bonus.c \
               free_bonus.c main_bonus.c format_bonus.c utilsFormat_bonus.c \
               createGame_bonus.c utilsCreateGame_bonus.c errorFree_bonus.c \
-              game_bonus.c movesGame_bonus.c closeGame_bonus.c utilsMovesGame_bonus.c \
-			  utilsCreateMap_bonus.c
+              game_bonus.c utilsGame_bonus.c closeGame_bonus.c utilsMovesGame_bonus.c \
+			  utilsCreateMap_bonus.c utilsFree_bonus.c errorImagesFree1.c errorImagesFree2.c \
+			  saveImage.c
 
 # Rutas completas
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
