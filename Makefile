@@ -45,7 +45,8 @@ SRC_FILES = error.c entry.c utilsEntry.c createMap.c free.c main.c format.c \
 BONUS_FILES = error_bonus.c entry_bonus.c utilsEntry_bonus.c createMap_bonus.c \
               free_bonus.c main_bonus.c format_bonus.c utilsFormat_bonus.c \
               createGame_bonus.c utilsCreateGame_bonus.c errorFree_bonus.c \
-              game_bonus.c movesGame_bonus.c closeGame_bonus.c utilsMovesGame_bonus.c
+              game_bonus.c movesGame_bonus.c closeGame_bonus.c utilsMovesGame_bonus.c \
+			  utilsCreateMap_bonus.c
 
 # Rutas completas
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
