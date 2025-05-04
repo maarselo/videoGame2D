@@ -24,5 +24,5 @@ int	main(int argc, char **argv)
 	ft_check_format(map);
 	game = ft_create_game(map);
 	ft_init_game(game);
-	ft_free(game);
+	ft_free_struct_game(game);
 }
