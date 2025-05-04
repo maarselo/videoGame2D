@@ -28,7 +28,7 @@ BONUS_HEADER = $(INCLUDE_DIR)/so_long_bonus.h
 # Fuentes normales
 SRC_FILES = error.c entry.c utilsEntry.c createMap.c free.c main.c format.c \
             utilsFormat.c createGame.c utilsCreateGame.c errorFree.c game.c \
-            movesGame.c closeGame.c utilsMovesGame.c
+            movesGame.c closeGame.c utilsMovesGame.c saveImage.c errorImagesFree.c
 
 # Fuentes bonus
 BONUS_FILES = error_bonus.c entry_bonus.c utilsEntry_bonus.c createMap_bonus.c \
