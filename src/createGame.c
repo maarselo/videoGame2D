@@ -53,7 +53,8 @@ static void	ft_init_images(t_game *game)
 {
 	game->wall = ft_load_image(WALL, "./Images/wall.png", game);
 	game->floor = ft_load_image(FLOOR, "./Images/floor.png", game);
-	game->collectionable = ft_load_image(COLLECTIONABLE, "./Images/Collectionable/diamond.png", game);
+	game->collectionable = ft_load_image(COLLECTIONABLE,
+			"./Images/Collectionable/diamond.png", game);
 	game->character = ft_init_characters_images(game);
 	game->exit = ft_init_exit_images(game);
 }
