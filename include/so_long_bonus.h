@@ -21,7 +21,7 @@
 # include <limits.h>
 # include <unistd.h>
 
-# define PIXELS 32
+# define PX 32
 
 # define WALL "wall"
 # define FLOOR "floor"
@@ -74,7 +74,7 @@ typedef struct s_game
 	mlx_image_t	*collectionable;
 	t_exit		*exit;
 	t_enemy		*enemies;
-	mlx_image_t *enemy_frames[4];
+	mlx_image_t	*enemy_frames[4];
 }			t_game;
 
 int			ft_check_len(char *str);
