@@ -54,6 +54,7 @@ typedef struct s_game
 {
 	int			x;
 	int			y;
+	int			moves;
 	t_map		*map;
 	mlx_t		*mlx;
 	mlx_image_t	*wall;
