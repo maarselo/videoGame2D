@@ -59,3 +59,53 @@ t_exit	*ft_init_exit_images(t_game *game)
 		ft_error_exit(exit, game);
 	return (exit);
 }
+
+t_enemy	*ft_init_enemies(t_game *game)
+{
+	int				i;
+	int				j;
+	int				i_enemy;
+	t_enemy			*enemies;
+
+	i = 0;
+	i_enemy = 0;
+	enemies = malloc(sizeof(t_enemy) * game->map->enemies);
+	while (i < game->map->rows)
+	{
+		j = 0;
+		while (j < game->map->columns)
+		{
+			if (game->map->map[i][j] == 'A')
+			{
+				enemies[i_enemy].x = i;
+				enemies[i_enemy].y = j;
+				enemies[i_enemy].current_frame = 0;
+				i_enemy++;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (enemies);
+}
+
+void	ft_init_enemies_frame(t_game *game)
+{
+	mlx_texture_t	*texture_tmp;
+
+	texture_tmp = mlx_load_png("./Images/Enemy/enemy1.png");
+	game->enemy_frames[0] = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	texture_tmp = mlx_load_png("./Images/Enemy/enemy2.png");
+	game->enemy_frames[1] = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	texture_tmp = mlx_load_png("./Images/Enemy/enemy3.png");
+	game->enemy_frames[2] = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	texture_tmp = mlx_load_png("./Images/Enemy/enemy4.png");
+	game->enemy_frames[3] = mlx_texture_to_image(game->mlx, texture_tmp);
+	mlx_delete_texture(texture_tmp);
+	if (!game->enemy_frames[0] || !game->enemy_frames[1]
+		|| !game->enemy_frames[2] || !game->enemy_frames[3])
+		ft_error_enemies(game);
+}

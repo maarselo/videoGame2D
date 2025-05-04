@@ -70,6 +70,11 @@ static void	ft_init_images(t_game *game)
 		ft_free_game_message(game, "\033[1;33m🔍 Can't find get PNG\033[0m\n");
 	game->character = ft_init_characters_images(game);
 	game->exit = ft_init_exit_images(game);
+	if (game->map->enemies > 0)
+	{
+		game->enemies = ft_init_enemies(game);
+		ft_init_enemies_frame(game);
+	}
 }
 
 t_game	*ft_create_game(t_map *map)
@@ -88,6 +93,7 @@ t_game	*ft_create_game(t_map *map)
 	game->character = NULL;
 	game->collectionable = NULL;
 	game->exit = NULL;
+	game->enemies = NULL;
 	ft_init_images(game);
 	return (game);
 }
