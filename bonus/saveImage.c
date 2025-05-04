@@ -34,7 +34,6 @@ mlx_image_t	*ft_load_image(char *type, char *path, t_game *game)
 	return (image);
 }
 
-
 mlx_image_t	*ft_character(char *path, t_game *game, t_character *character)
 {
 	mlx_texture_t	*texture;

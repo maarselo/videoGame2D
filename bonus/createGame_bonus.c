@@ -41,8 +41,8 @@ static mlx_t	*ft_init_window(t_game *game)
 	int				weight_to_pixels;
 	int				height_to_pixels;
 
-	weight_to_pixels = game->map->columns * PIXELS;
-	height_to_pixels = game->map->rows * PIXELS;
+	weight_to_pixels = game->map->columns * PX;
+	height_to_pixels = game->map->rows * PX;
 	mlx = mlx_init(weight_to_pixels, height_to_pixels, "so_long", true);
 	if (!mlx)
 		ft_error_free_game(game);
@@ -53,7 +53,8 @@ static void	ft_init_images(t_game *game)
 {
 	game->wall = ft_load_image(WALL, "./Images/wall.png", game);
 	game->floor = ft_load_image(FLOOR, "./Images/floor.png", game);
-	game->collectionable = ft_load_image(COLLECTIONABLE, "./Images/Collectionable/diamond.png", game);
+	game->collectionable = ft_load_image(COLLECTIONABLE,
+			"./Images/Collectionable/diamond.png", game);
 	game->character = ft_init_characters_images(game);
 	game->exit = ft_init_exit_images(game);
 	if (game->map->enemies > 0)

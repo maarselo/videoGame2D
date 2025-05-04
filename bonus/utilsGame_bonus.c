@@ -64,17 +64,21 @@ int	ft_move_down(t_game *game)
 	return (0);
 }
 
-void ft_select_tile(int i, int j, t_game *game)
+void	ft_select_tile(int i, int j, t_game *game)
 {
 	if (game->map->map[i][j] == '1')
-		mlx_image_to_window(game->mlx, game->wall, j * PIXELS, i * PIXELS);
+		mlx_image_to_window(game->mlx, game->wall,
+			j * PX, i * PX);
 	if (game->map->map[i][j] == 'P')
-		mlx_image_to_window(game->mlx, game->character->initial, j * PIXELS, i * PIXELS);
+		mlx_image_to_window(game->mlx, game->character->initial,
+			j * PX, i * PX);
 	if (game->map->map[i][j] == 'E')
-		mlx_image_to_window(game->mlx, game->exit->close, j * PIXELS, i * PIXELS);
+		mlx_image_to_window(game->mlx, game->exit->close,
+			j * PX, i * PX);
 	if (game->map->map[i][j] == 'C')
-		mlx_image_to_window(game->mlx, game->collectionable, j * PIXELS, i * PIXELS);
+		mlx_image_to_window(game->mlx, game->collectionable,
+			j * PX, i * PX);
 	if (game->map->map[i][j] == 'A')
-		mlx_image_to_window(game->mlx, game->enemy_frames[0], j * PIXELS, i * PIXELS);
-
+		mlx_image_to_window(game->mlx, game->enemy_frames[0],
+			j * PX, i * PX);
 }

@@ -23,7 +23,7 @@ static void	ft_first_draw(t_game *game)
 		j = -1;
 		while (++j < game->map->columns)
 		{
-			mlx_image_to_window(game->mlx, game->floor, j * PIXELS, i * PIXELS);
+			mlx_image_to_window(game->mlx, game->floor, j * PX, i * PX);
 			ft_select_tile (i, j, game);
 		}
 	}
@@ -54,27 +54,29 @@ static void	ft_key_hook(mlx_key_data_t key, void *game)
 
 static void	ft_animate_enemies(void *game)
 {
-	int		i;
-	static int		timer;
-	t_game	*g;
-	t_enemy	*enemy_tmp;
+	int			i;
+	static int	timer;
+	t_game		*g;
+	t_enemy		*enemy_tmp;
 
 	g = (t_game *)game;
 	timer++;
 	if (timer > 15)
 	{
-		i = 0;
+		i = -1;
 		timer = 0;
-		while (i < g->map->enemies)
+		while (++i < g->map->enemies)
 		{
 			enemy_tmp = &g->enemies[i];
 			if (g->floor)
-				mlx_image_to_window(g->mlx, g->floor, enemy_tmp->y * PIXELS, enemy_tmp->x * PIXELS);
-			mlx_image_to_window(g->mlx, g->enemy_frames[enemy_tmp->current_frame], enemy_tmp->y * PIXELS, enemy_tmp->x * PIXELS);
+				mlx_image_to_window(g->mlx, g->floor, enemy_tmp->y * PX,
+					enemy_tmp->x * PX);
+			mlx_image_to_window(g->mlx,
+				g->enemy_frames[enemy_tmp->current_frame],
+				enemy_tmp->y * PX, enemy_tmp->x * PX);
 			enemy_tmp->current_frame++;
 			if (enemy_tmp->current_frame >= 4)
 				enemy_tmp->current_frame = 0;
-			i++;
 		}
 	}
 }

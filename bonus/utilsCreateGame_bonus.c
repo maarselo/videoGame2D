@@ -70,8 +70,12 @@ t_enemy	*ft_init_enemies(t_game *game)
 
 void	ft_init_enemies_frame(t_game *game)
 {
-	game->enemy_frames[0] = ft_load_image(ENEMY, "./Images/Enemy/enemy1.png", game);
-	game->enemy_frames[1] = ft_load_image(ENEMY, "./Images/Enemy/enemy2.png", game);
-	game->enemy_frames[2] = ft_load_image(ENEMY, "./Images/Enemy/enemy3.png", game);
-	game->enemy_frames[3] = ft_load_image(ENEMY, "./Images/Enemy/enemy4.png", game);
+	game->enemy_frames[0] = ft_load_image(ENEMY,
+			"./Images/Enemy/enemy1.png", game);
+	game->enemy_frames[1] = ft_load_image(ENEMY,
+			"./Images/Enemy/enemy2.png", game);
+	game->enemy_frames[2] = ft_load_image(ENEMY,
+			"./Images/Enemy/enemy3.png", game);
+	game->enemy_frames[3] = ft_load_image(ENEMY,
+			"./Images/Enemy/enemy4.png", game);
 }
