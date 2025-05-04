@@ -17,11 +17,11 @@ static void	ft_first_draw(t_game *game)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < game->map->rows)
+	i = -1;
+	while (++i < game->map->rows)
 	{
-		j = 0;
-		while (j < game->map->columns)
+		j = -1;
+		while (++j < game->map->columns)
 		{
 			mlx_image_to_window(game->mlx, game->floor, j * PIXELS, i * PIXELS);
 			if (game->map->map[i][j] == '1')
@@ -36,15 +36,14 @@ static void	ft_first_draw(t_game *game)
 			if (game->map->map[i][j] == 'C')
 				mlx_image_to_window(game->mlx, game->collectionable, 
 					j * PIXELS, i * PIXELS);
-			j++;
 		}
-		i++;
 	}
 }
 
 void	ft_init_game(t_game *game)
 {
 	ft_first_draw(game);
-	mlx_key_hook(game->mlx, &ft_key_hook, game);
+	mlx_key_hook(game->mlx, ft_key_hook, game);
+	mlx_close_hook(game->mlx, ft_close_x, game);
 	mlx_loop(game->mlx);
 }
