@@ -23,7 +23,7 @@ SRCS = $(SRC_DIR)/error.c $(SRC_DIR)/entry.c $(SRC_DIR)/utilsEntry.c \
 		$(SRC_DIR)/create_map.c $(SRC_DIR)/free.c $(SRC_DIR)/main.c \
 		$(SRC_DIR)/format.c $(SRC_DIR)/utilsFormat.c $(SRC_DIR)/createGame.c \
 		$(SRC_DIR)/utilsCreateGame.c $(SRC_DIR)/errorFree.c $(SRC_DIR)/game.c \
-		$(SRC_DIR)/movesGame1.c $(SRC_DIR)/movesGame2.c $(SRC_DIR)/utilsMovesGame.c
+		$(SRC_DIR)/movesGame.c $(SRC_DIR)/closeGame.c $(SRC_DIR)/utilsMovesGame.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
