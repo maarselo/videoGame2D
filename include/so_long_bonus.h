@@ -98,11 +98,11 @@ t_enemy		*ft_init_enemies(t_game *game);
 void		ft_init_enemies_frame(t_game *game);
 t_game		*ft_create_game(t_map *map);
 
-void		ft_select_tile(int i, int j, t_game *game);
 int			ft_move_up(t_game *game);
 int			ft_move_left(t_game *game);
 int			ft_move_right(t_game *game);
 int			ft_move_down(t_game *game);
+void		ft_select_tile(int i, int j, t_game *game);
 int			ft_check_new_position(int x, int y, t_game *game);
 void		ft_draw_moves(int new_x, int new_y, char *direction, t_game *game);
 
@@ -115,9 +115,6 @@ void		ft_init_game(t_game *game);
 void		ft_error(void);
 void		ft_error_message(char *message);
 
-void		ft_error_free_map(t_map *map);
-void		ft_error_free_game(t_game *game);
-
 void		ft_error_wall(t_game *game);
 void		ft_error_floor(t_game *game);
 void		ft_error_collectionable(t_game *game);
@@ -125,8 +122,9 @@ void		ft_error_character(t_character *character, t_game *game);
 void		ft_error_exit(t_exit *exit, t_game *game);
 void		ft_error_enemies(t_game *game);
 
+void		ft_error_free_map(t_map *map);
+void		ft_error_free_game(t_game *game);
 void		ft_free_game_message(t_game *game, char *message);
-
 
 void		ft_free_struct_character(t_game *game);
 void		ft_free_struct_exit(t_game *game);
