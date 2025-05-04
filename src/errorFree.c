@@ -12,7 +12,6 @@
 
 #include "so_long.h"
 
-//For malloc fails
 void	ft_error_free_map(t_map *map)
 {
 	if (map)

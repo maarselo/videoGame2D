@@ -37,17 +37,6 @@ static void	ft_open_exit(t_game *game)
 	}
 }
 
-static void	ft_check_exit(int new_x, int new_y, t_game *game)
-{
-	if (game->map->map[new_x][new_y] == 'E'
-		&& game->map->collectionables == 0)
-	{
-		ft_printf("\033[1;32m🏆 Victory! The mummy rests now.\033[0m\n");
-		ft_free_struct_game(game);
-		exit(0);
-	}
-}
-
 static void	ft_draw_character(char *direction, t_game *game)
 {
 	if (!ft_strncmp(direction, "up", 2))
