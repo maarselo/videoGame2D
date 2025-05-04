@@ -14,49 +14,28 @@
 
 t_character	*ft_init_characters_images(t_game *game)
 {
-	t_character		*character;
-	mlx_texture_t	*texture_tmp;
+	t_character		*c;
 
-	character = (t_character *)malloc(sizeof(t_character));
-	if (!character)
+	c = (t_character *)malloc(sizeof(t_character));
+	if (!c)
 		ft_error_free_game(game);
-	texture_tmp = mlx_load_png("./Images/Character/initial.png");
-	character->initial = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	texture_tmp = mlx_load_png("./Images/Character/up.png");
-	character->up = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	texture_tmp = mlx_load_png("./Images/Character/left.png");
-	character->left = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	texture_tmp = mlx_load_png("./Images/Character/right.png");
-	character->right = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	texture_tmp = mlx_load_png("./Images/Character/down.png");
-	character->down = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	if (!character->initial || !character->up || !character->left
-		|| !character->right || !character->down)
-		ft_error_character(character, game);
-	return (character);
+	c->initial = ft_character("./Images/Character/initial.png", game, c);
+	c->up = ft_character("./Images/Character/up.png", game, c);
+	c->left = ft_character("./Images/Character/left.png", game, c);
+	c->right = ft_character("./Images/Character/right.png", game, c);
+	c->down = ft_character("./Images/Character/down.png", game, c);
+	return (c);
 }
 
 t_exit	*ft_init_exit_images(t_game *game)
 {
 	t_exit			*exit;
-	mlx_texture_t	*texture_tmp;
 
 	exit = (t_exit *)malloc(sizeof(t_exit));
 	if (!exit)
 		ft_error_free_game(game);
-	texture_tmp = mlx_load_png("./Images/Exit/close.png");
-	exit->close = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	texture_tmp = mlx_load_png("./Images/Exit/open1.png");
-	exit->open = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	if (!exit->close || !exit->open)
-		ft_error_exit(exit, game);
+	exit->close = ft_exit("./Images/Exit/close.png", game, exit);
+	exit->open = ft_exit("./Images/Exit/open.png", game, exit);
 	return (exit);
 }
 
@@ -91,21 +70,8 @@ t_enemy	*ft_init_enemies(t_game *game)
 
 void	ft_init_enemies_frame(t_game *game)
 {
-	mlx_texture_t	*texture_tmp;
-
-	texture_tmp = mlx_load_png("./Images/Enemy/enemy1.png");
-	game->enemy_frames[0] = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	texture_tmp = mlx_load_png("./Images/Enemy/enemy2.png");
-	game->enemy_frames[1] = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	texture_tmp = mlx_load_png("./Images/Enemy/enemy3.png");
-	game->enemy_frames[2] = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	texture_tmp = mlx_load_png("./Images/Enemy/enemy4.png");
-	game->enemy_frames[3] = mlx_texture_to_image(game->mlx, texture_tmp);
-	mlx_delete_texture(texture_tmp);
-	if (!game->enemy_frames[0] || !game->enemy_frames[1]
-		|| !game->enemy_frames[2] || !game->enemy_frames[3])
-		ft_error_enemies(game);
+	game->enemy_frames[0] = ft_load_image(ENEMY, "./Images/Enemy/enemy1.png", game);
+	game->enemy_frames[1] = ft_load_image(ENEMY, "./Images/Enemy/enemy2.png", game);
+	game->enemy_frames[2] = ft_load_image(ENEMY, "./Images/Enemy/enemy3.png", game);
+	game->enemy_frames[3] = ft_load_image(ENEMY, "./Images/Enemy/enemy4.png", game);
 }
