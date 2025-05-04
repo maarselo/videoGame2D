@@ -60,14 +60,8 @@ void	ft_draw_moves(int new_x, int new_y, char *direction, t_game *game)
 	mlx_image_to_window(game->mlx, game->floor, game->y * PIXELS,
 		game->x * PIXELS);
 	if (game->map->map[game->x][game->y] == 'E')
-	{
-		if (game->map->collectionables == 0)
-			mlx_image_to_window(game->mlx, game->exit->open, game->y * PIXELS,
+		mlx_image_to_window(game->mlx, game->exit->close, game->y * PIXELS,
 				game->x * PIXELS);
-		else
-			mlx_image_to_window(game->mlx, game->exit->close, game->y * PIXELS,
-				game->x * PIXELS);
-	}
 	if (game->map->map[game->x][game->y] != 'E')
 		game->map->map[game->x][game->y] = '0';
 	if (game->map->map[new_x][new_y] != 'E')
