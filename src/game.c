@@ -40,6 +40,39 @@ static void	ft_first_draw(t_game *game)
 	}
 }
 
+static void	ft_key_hook(mlx_key_data_t key, void *game)
+{
+	t_game	*g;
+
+	g = (t_game *)game;
+	if ((key.key == MLX_KEY_UP || key.key == MLX_KEY_LEFT
+			|| key.key == MLX_KEY_RIGHT || key.key == MLX_KEY_DOWN)
+		&& key.action == MLX_PRESS)
+	{
+		if (key.key == MLX_KEY_UP && key.action == MLX_PRESS)
+			g->moves += ft_move_up(game);
+		if (key.key == MLX_KEY_LEFT && key.action == MLX_PRESS)
+			g->moves += ft_move_left(game);
+		if (key.key == MLX_KEY_RIGHT && key.action == MLX_PRESS)
+			g->moves += ft_move_right(game);
+		if (key.key == MLX_KEY_DOWN && key.action == MLX_PRESS)
+			g->moves += ft_move_down(game);
+		ft_printf("You moved %d times — The treasure awaits!\n", g->moves);
+	}
+	if (key.key == MLX_KEY_ESCAPE && key.action == MLX_PRESS)
+		ft_close(game);
+}
+
+static void	ft_close_x(void *game)
+{
+	t_game	*g;
+
+	g = (t_game *)game;
+	ft_printf("\033[1;31mGame closed. See you next time! 👋\033[0m\n");
+	ft_free_struct_game(g);
+	exit(0);
+}
+
 void	ft_init_game(t_game *game)
 {
 	ft_first_draw(game);
