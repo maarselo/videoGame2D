@@ -32,7 +32,7 @@ int	ft_check_line(char *line)
 	if (!line)
 		return (1);
 	i = 0;
-	content_map = "01CEP";
+	content_map = "01CEPA";
 	while (line[i])
 	{
 		if (line[i] != '\n' && !ft_strchr(content_map, line[i]))
