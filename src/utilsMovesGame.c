@@ -47,7 +47,17 @@ static void ft_check_exit(int new_x, int new_y, t_game *game)
 		exit(0);
 	}
 }
-
+static void	ft_draw_character(char *direction, t_game *game)
+{
+	if (!ft_strncmp(direction, "up", 2))
+        mlx_image_to_window(game->mlx, game->character->up, game->y * PIXELS, game->x * PIXELS);
+    else if (!ft_strncmp(direction, "left", 4))
+        mlx_image_to_window(game->mlx, game->character->left, game->y * PIXELS, game->x * PIXELS);
+    else if (!ft_strncmp(direction, "right", 5))
+        mlx_image_to_window(game->mlx, game->character->right, game->y * PIXELS, game->x * PIXELS);
+    else if (!ft_strncmp(direction, "down", 4))
+        mlx_image_to_window(game->mlx, game->character->down, game->y * PIXELS, game->x * PIXELS);
+}
 void ft_draw_moves(int new_x, int new_y, char *direction, t_game *game)
 {
 	if (game->map->map[new_x][new_y] == 'C')
@@ -69,14 +79,7 @@ void ft_draw_moves(int new_x, int new_y, char *direction, t_game *game)
 		game->map->map[new_x][new_y] = 'P';
 	game->x = new_x;
 	game->y = new_y;
-	if (!ft_strncmp(direction,"up", ft_strlen(direction)))
-		mlx_image_to_window(game->mlx, game->character->up, game->y * PIXELS, game->x * PIXELS);
-	else if (!ft_strncmp(direction,"left", ft_strlen(direction)))
-		mlx_image_to_window(game->mlx, game->character->left, game->y * PIXELS, game->x * PIXELS);
-	else if (!ft_strncmp(direction,"right", ft_strlen(direction)))
-		mlx_image_to_window(game->mlx, game->character->right, game->y * PIXELS, game->x * PIXELS);
-	else if (!ft_strncmp(direction,"down", ft_strlen(direction)))
-		mlx_image_to_window(game->mlx, game->character->down, game->y * PIXELS, game->x * PIXELS);
+	ft_draw_character(direction, game);
 	if (game->map->collectionables == 0)
 		ft_open_exit(game);
 	ft_check_exit(game->x, game->y, game);
