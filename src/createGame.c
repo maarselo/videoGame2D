@@ -81,6 +81,7 @@ t_game	*ft_create_game(t_map *map)
 		ft_error_free_map(map);
 	game->map = map;
 	ft_set_coordinates(game);
+	game->moves = 0;
 	game->mlx = ft_init_window(game);
 	game->wall = NULL;
 	game->floor = NULL;
