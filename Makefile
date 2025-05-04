@@ -9,33 +9,59 @@
 #    Updated: 2025/05/03 03:16:47 by mvillavi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mvillavi <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/05/03 03:16:45 by mvillavi          #+#    #+#              #
+#    Updated: 2025/05/04 00:00:00 by mvillavi         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = so_long
+BONUS = so_long_bonus
 
 SRC_DIR = src
+BONUS_DIR = bonus
 INCLUDE_DIR = include
 OBJ_DIR = obj
-LIBFT_DIR=./Libs/Libft
-MLX_DIR=./Libs/MLX42
+OBJ_BONUS_DIR = obj_bonus
+LIBFT_DIR = ./Libs/Libft
+MLX_DIR = ./Libs/MLX42
 
 HEADER = $(INCLUDE_DIR)/so_long.h
-SRCS = $(SRC_DIR)/error.c $(SRC_DIR)/entry.c $(SRC_DIR)/utilsEntry.c \
-		$(SRC_DIR)/createMap.c $(SRC_DIR)/free.c $(SRC_DIR)/main.c \
-		$(SRC_DIR)/format.c $(SRC_DIR)/utilsFormat.c $(SRC_DIR)/createGame.c \
-		$(SRC_DIR)/utilsCreateGame.c $(SRC_DIR)/errorFree.c $(SRC_DIR)/game.c \
-		$(SRC_DIR)/movesGame.c $(SRC_DIR)/closeGame.c $(SRC_DIR)/utilsMovesGame.c
 
-OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+# Fuentes normales
+SRC_FILES = error.c entry.c utilsEntry.c createMap.c free.c main.c format.c \
+            utilsFormat.c createGame.c utilsCreateGame.c errorFree.c game.c \
+            movesGame.c closeGame.c utilsMovesGame.c
 
-LIBFT=$(LIBFT_DIR)/libft.a
-MLX=$(MLX_DIR)/build/libmlx42.a
-MLX_HEADER=$(MLX_DIR)/include
-MLX_FLAGS=-ldl -lglfw -pthread -lm
+# Fuentes bonus
+BONUS_FILES = error_bonus.c entry_bonus.c utilsEntry_bonus.c createMap_bonus.c \
+              free_bonus.c main_bonus.c format_bonus.c utilsFormat_bonus.c \
+              createGame_bonus.c utilsCreateGame_bonus.c errorFree_bonus.c \
+              game_bonus.c movesGame_bonus.c closeGame_bonus.c utilsMovesGame_bonus.c
+
+# Rutas completas
+SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+BSRCS = $(addprefix $(BONUS_DIR)/, $(BONUS_FILES))
+
+# Objetos
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
+OBJS_BONUS = $(addprefix $(OBJ_BONUS_DIR)/, $(BONUS_FILES:.c=.o))
+
+LIBFT = $(LIBFT_DIR)/libft.a
+MLX = $(MLX_DIR)/build/libmlx42.a
+MLX_FLAGS = -ldl -lglfw -pthread -lm
 
 CC = cc -g
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE_DIR)
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE_DIR) -I$(MLX_DIR)/include
 RM = rm -rf
 
+# Colores
 GREEN = \033[1;32m
 BLUE = \033[1;34m
 YELLOW = \033[1;33m
@@ -44,33 +70,47 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(LIBFT): 
-	@echo "$(BLUE)->Compilando Libft...$(RESET)"
+$(LIBFT):
+	@echo "$(BLUE)-> Compilando Libft...$(RESET)"
 	@make -C $(LIBFT_DIR)
 	@make -C $(LIBFT_DIR) bonus
 
-$(NAME): $(OBJS) $(LIBFT) $(HEADER) Makefile
+$(NAME): $(OBJS) $(LIBFT)
 	@echo "$(GREEN)✔ Compilando $(NAME)...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(INCLUDES_MLX) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
-	@echo "$(GREEN)	 Compilación completada!$(RESET)"
-
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
+	@echo "$(GREEN)   Compilación completada!$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@echo "$(YELLOW)Compilando $<...$(RESET)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-clean :
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+bonus: $(BONUS)
+
+$(BONUS): $(OBJS_BONUS) $(LIBFT)
+	@echo "$(GREEN)✔ Compilando $(BONUS)...$(RESET)"
+	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(BONUS)
+	@echo "$(GREEN)   Compilación BONUS completada!$(RESET)"
+
+$(OBJ_BONUS_DIR)/%.o: $(BONUS_DIR)/%.c | $(OBJ_BONUS_DIR)
+	@echo "$(YELLOW)Compilando BONUS $<...$(RESET)"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_BONUS_DIR):
+	@mkdir -p $(OBJ_BONUS_DIR)
+
+clean:
 	@echo "$(RED)  Limpiando objetos...$(RESET)"
 	@make -C $(LIBFT_DIR) clean
-	@$(RM) $(OBJ_DIR)
+	@$(RM) $(OBJ_DIR) $(OBJ_BONUS_DIR)
 
 fclean: clean
-	@echo "$(RED)  Borrando ejecutable...$(RESET)"
+	@echo "$(RED)  Borrando ejecutables...$(RESET)"
 	@make -C $(LIBFT_DIR) fclean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(BONUS)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
