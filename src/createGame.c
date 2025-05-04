@@ -15,7 +15,7 @@
 static void	ft_set_coordinates(t_game *game)
 {
 	int	x;
-	int y;
+	int	y;
 
 	x = 0;
 	while (x < game->map->rows)

@@ -70,7 +70,7 @@ void	ft_key_hook(mlx_key_data_t key, void *game)
 
 	g = (t_game *)game;
 	if ((key.key == MLX_KEY_UP || key.key == MLX_KEY_LEFT
-		|| key.key == MLX_KEY_RIGHT || key.key == MLX_KEY_DOWN)
+			|| key.key == MLX_KEY_RIGHT || key.key == MLX_KEY_DOWN)
 		&& key.action == MLX_PRESS)
 	{
 		if (key.key == MLX_KEY_UP && key.action == MLX_PRESS)

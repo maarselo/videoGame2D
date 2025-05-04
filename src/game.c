@@ -25,16 +25,16 @@ static void	ft_first_draw(t_game *game)
 		{
 			mlx_image_to_window(game->mlx, game->floor, j * PIXELS, i * PIXELS);
 			if (game->map->map[i][j] == '1')
-				mlx_image_to_window(game->mlx, game->wall, 
+				mlx_image_to_window(game->mlx, game->wall,
 					j * PIXELS, i * PIXELS);
 			if (game->map->map[i][j] == 'P')
-				mlx_image_to_window(game->mlx, game->character->initial, 
+				mlx_image_to_window(game->mlx, game->character->initial,
 					j * PIXELS, i * PIXELS);
 			if (game->map->map[i][j] == 'E')
-				mlx_image_to_window(game->mlx, game->exit->close, 
+				mlx_image_to_window(game->mlx, game->exit->close,
 					j * PIXELS, i * PIXELS);
 			if (game->map->map[i][j] == 'C')
-				mlx_image_to_window(game->mlx, game->collectionable, 
+				mlx_image_to_window(game->mlx, game->collectionable,
 					j * PIXELS, i * PIXELS);
 		}
 	}

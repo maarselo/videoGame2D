@@ -18,6 +18,7 @@ void	ft_close(t_game *game)
 	ft_free_struct_game(game);
 	exit(0);
 }
+
 void	ft_close_x(void *game)
 {
 	t_game	*g;
