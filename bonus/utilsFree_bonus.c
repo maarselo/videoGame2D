@@ -46,11 +46,16 @@ void	ft_delete_frames(t_game *game)
 {
 	int	i;
 
+	if (!game || !game->mlx)
+		return ;
 	i = 0;
 	while (i < 4)
 	{
 		if (game->enemy_frames[i])
+		{
 			mlx_delete_image(game->mlx, game->enemy_frames[i]);
+			game->enemy_frames[i] = NULL;
+		}
 		i++;
 	}
 }
