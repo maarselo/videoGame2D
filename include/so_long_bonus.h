@@ -117,6 +117,8 @@ void		ft_draw_moves(int new_x, int new_y, char *direction, t_game *game);
 void		ft_check_enemy(t_game *game);
 void		ft_check_exit(t_game *game);
 void		ft_close(t_game *game);
+void		ft_close_x(void *game);
+
 
 void		ft_init_game(t_game *game);
 

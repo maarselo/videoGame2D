@@ -12,6 +12,16 @@
 
 #include "so_long_bonus.h"
 
+void	ft_close_x(void *game)
+{
+	t_game	*g;
+
+	g = (t_game *)game;
+	ft_printf("\033[1;31mGame closed. See you next time! 👋\033[0m\n");
+	ft_free_struct_game(g);
+	exit(0);
+}
+
 void	ft_check_enemy(t_game *game)
 {
 	if (game->map->map[game->x][game->y] == 'A')

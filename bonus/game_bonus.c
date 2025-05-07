@@ -79,6 +79,7 @@ static void	ft_animate_enemies(void *game)
 		}
 	}
 }
+
 static void	ft_show_moves(void *game)
 {
 	t_game	*g;
@@ -92,19 +93,10 @@ static void	ft_show_moves(void *game)
 	str = ft_strjoin("Moves: ", moves);
 	if (g->moves_img)
 		mlx_delete_image(g->mlx, g->moves_img);
-	g->moves_img = mlx_put_string(g->mlx, str, ((g->map->columns - 3) * PX) / 2, 10);
+	g->moves_img = mlx_put_string(g->mlx, str,
+			((g->map->columns - 3) * PX) / 2, 10);
 	free (moves);
 	free (str);
-}
-
-static void	ft_close_x(void *game)
-{
-	t_game	*g;
-
-	g = (t_game *)game;
-	ft_printf("\033[1;31mGame closed. See you next time! 👋\033[0m\n");
-	ft_free_struct_game(g);
-	exit(0);
 }
 
 void	ft_init_game(t_game *game)
