@@ -37,6 +37,12 @@ typedef struct s_map
 	char		**map;
 }				t_map;	
 
+typedef struct s_path
+{
+	int			collectionables;
+	int			exit;
+}				t_path;
+
 typedef struct s_character
 {
 	mlx_image_t	*initial;
@@ -75,7 +81,8 @@ t_map		*ft_create_map(char *file);
 int			ft_check_line_quantity(char *line, char c);
 int			ft_check_horizontal(t_map *map);
 int			ft_check_vertical(t_map *map);
-void		ft_check_format(t_map *map);
+int			ft_init_values_path(int *x, int *y, t_path *path, t_map *map);
+void		ft_check_format(t_map *map, char *file);
 
 mlx_image_t	*ft_load_image(char *type, char *path, t_game *game);
 mlx_image_t	*ft_character(char *path, t_game *game, t_character *character);
@@ -112,4 +119,5 @@ void		ft_free_game_message(t_game *game, char *message);
 
 void		ft_free_struct_map(t_map *map);
 void		ft_free_struct_game(t_game *game);
+
 #endif
