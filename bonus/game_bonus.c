@@ -46,7 +46,6 @@ static void	ft_key_hook(mlx_key_data_t key, void *game)
 			g->moves += ft_move_right(game);
 		if (key.key == MLX_KEY_S && key.action == MLX_PRESS)
 			g->moves += ft_move_down(game);
-		ft_printf("You moved %d times — The treasure awaits!\n", g->moves);
 	}
 	if (key.key == MLX_KEY_ESCAPE && key.action == MLX_PRESS)
 		ft_close(game);
@@ -80,6 +79,23 @@ static void	ft_animate_enemies(void *game)
 		}
 	}
 }
+static void	ft_show_moves(void *game)
+{
+	t_game	*g;
+	char	*moves;
+	char	*str;
+
+	g = (t_game *)game;
+	if (!g)
+		return ;
+	moves = ft_itoa(g->moves);
+	str = ft_strjoin("Moves: ", moves);
+	if (g->moves_img)
+		mlx_delete_image(g->mlx, g->moves_img);
+	g->moves_img = mlx_put_string(g->mlx, str, ((g->map->columns - 3) * PX) / 2, 10);
+	free (moves);
+	free (str);
+}
 
 static void	ft_close_x(void *game)
 {
@@ -96,6 +112,7 @@ void	ft_init_game(t_game *game)
 	ft_first_draw(game);
 	mlx_key_hook(game->mlx, ft_key_hook, game);
 	mlx_loop_hook(game->mlx, &ft_animate_enemies, game);
+	mlx_loop_hook(game->mlx, &ft_show_moves, game);
 	mlx_close_hook(game->mlx, ft_close_x, game);
 	mlx_loop(game->mlx);
 }
