@@ -63,3 +63,27 @@ int	ft_check_vertical(t_map *map)
 	}
 	return (0);
 }
+
+void	ft_init_values_path(int *x, int *y, t_path *path, t_map *map)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < map->rows)
+	{
+		j = 0;
+		while (j < map->columns)
+		{
+			if (map->map[i][j] == 'P')
+			{
+				*x = i;
+				*y = j;
+			}
+			j++;
+		}
+		i++;
+	}
+	path->collectionables = 0;
+	path->exit = 0;
+}
