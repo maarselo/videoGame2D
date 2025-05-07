@@ -84,7 +84,7 @@ void	ft_check_format(t_map *map, char *file)
 	if (path.collectionables != map->collectionables || path.exit != 1)
 	{
 		ft_free_struct_map(copy_map);
-		ft_error_message("\033[1;31mTrapped forever... no escape! 😵\033[0m\n");
+		ft_error_message("\033[1;33mTrapped forever... no escape! 😵\033[0m\n");
 	}
 	ft_free_struct_map(copy_map);
 }
