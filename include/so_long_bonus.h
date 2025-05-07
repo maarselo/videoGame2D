@@ -94,7 +94,7 @@ t_map		*ft_create_map(char *file);
 int			ft_check_line_quantity(char *line, char c);
 int			ft_check_horizontal(t_map *map);
 int			ft_check_vertical(t_map *map);
-int			ft_init_values_path(int *x, int *y, t_path *path, t_map *map);
+void			ft_init_values_path(int *x, int *y, t_path *path, t_map *map);
 void		ft_check_format(t_map *map, char *file);
 
 mlx_image_t	*ft_exit(char *path, t_game *game, t_exit *exit);
