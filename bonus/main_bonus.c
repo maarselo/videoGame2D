@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_check_file(argv[1]);
 	map = ft_create_map(argv[1]);
-	ft_check_format(map);
+	ft_check_format(map, argv[1]);
 	game = ft_create_game(map);
 	ft_init_game(game);
 	ft_free_struct_game(game);
