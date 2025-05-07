@@ -52,16 +52,39 @@ static void	ft_check_is_rectangular(t_map *map)
 		ft_error_message("\033[1;33m🚧 Map must be rectangular.\033[0m\n");
 	}
 }
-/*
-static void	ft_check_exits_path(t_map *map)
-{
 
+static void	ft_check_exits_path(int x, int y, char **map, t_path *path)
+{
+	if (map[x][y] == '1' || map[x][y] == 'X')
+		return ;
+	else if (map[x][y] == 'C')
+		++path->collectionables;
+	else if (map[x][y] == 'E')
+		++path->exit;
+	map[x][y] = 'X';
+	ft_check_exits_path(x - 1, y, map, path);
+	ft_check_exits_path(x + 1, y, map, path);
+	ft_check_exits_path(x, y - 1, map, path);
+	ft_check_exits_path(x, y + 1, map, path);
 }
-*/
 
-void	ft_check_format(t_map *map)
+void	ft_check_format(t_map *map, char *file)
 {
+	int			x;
+	int			y;
+	t_map		*copy_map;
+	t_path		path;
+
 	ft_check_letters_map(map);
 	ft_check_borders(map);
 	ft_check_is_rectangular(map);
+	copy_map = ft_create_map(file);
+	ft_init_values_path(&x, &y, &path, map);
+	ft_check_exits_path(x, y, copy_map->map, &path);
+	if (path.collectionables != map->collectionables || path.exit != 1)
+	{
+		ft_free_struct_map(copy_map);
+		ft_error_message("\033[1;31mTrapped forever... no escape! 😵\033[0m\n");
+	}
+	ft_free_struct_map(copy_map);
 }
