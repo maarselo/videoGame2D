@@ -68,6 +68,7 @@ typedef struct s_game
 	int			moves;
 	t_map		*map;
 	mlx_t		*mlx;
+	mlx_image_t	*moves_img;
 	mlx_image_t	*wall;
 	mlx_image_t	*floor;
 	t_character	*character;

@@ -39,6 +39,8 @@ void	ft_free_struct_game(t_game *game)
 		return ;
 	if (game->map)
 		ft_free_struct_map(game->map);
+	if (game->moves_img)
+		mlx_delete_image(game->mlx, game->moves_img);
 	if (game->wall)
 		mlx_delete_image(game->mlx, game->wall);
 	if (game->floor)
